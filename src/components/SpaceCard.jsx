@@ -30,7 +30,7 @@ export default function SpaceCard({ space }) {
 
         {/* Price styled with header color */}
         <p className="text-[#6c584c] font-semibold text-sm group-hover:text-[#8d7b68] transition-colors duration-300">
-          ₱{space.price}/hr
+          ₱{space.price}
         </p>
 
         <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">

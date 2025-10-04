@@ -4,7 +4,7 @@ import spaces from "../data/spaces";
 
 export default function Home() {
   const [q, setQ] = useState("");
-  const [sortBy, setSortBy] = useState(""); // ✅ new state for sorting
+  const [sortBy, setSortBy] = useState("");
 
   // Filter spaces by search
   const filtered = spaces.filter(
@@ -99,26 +99,23 @@ export default function Home() {
 
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <h2 className="text-xl font-bold text-[#6c584c] mb-1">
+                  <h2 className="text-xl font-bold text-[#6c584c] mb-2 leading-tight">
                     {s.name}
                   </h2>
-                  <p className="text-sm text-gray-500 flex items-center gap-1">
+                  <p className="text-sm text-gray-500 flex items-center gap-1 mb-2">
                     📍 {s.location}
                   </p>
-                  <p className="text-sm text-gray-600 mt-3 flex-grow">
-                    {s.description}
-                  </p>
-                  <p className="text-[#6c584c] font-bold mt-4">
-                    ₱{s.price}/hr
-                  </p>
-                  <Link
-                    to={`/space/${s.id}`}
-                    className="mt-4 inline-block bg-gradient-to-r from-[#6c584c] to-[#8d7b68] 
-                               text-white px-5 py-2 rounded-lg text-sm font-medium 
-                               hover:from-[#5a463c] hover:to-[#7a6b58] transition self-start"
-                  >
-                    View Details
-                  </Link>
+                  <div className="flex justify-between items-center mt-auto">
+                    <p className="text-[#6c584c] font-bold text-lg">₱{s.price}</p>
+                    <Link
+                      to={`/space/${s.id}`}
+                      className="inline-block bg-gradient-to-r from-[#6c584c] to-[#8d7b68] 
+                                 text-white px-4 py-2 rounded-lg text-sm font-medium 
+                                 hover:from-[#5a463c] hover:to-[#7a6b58] transition"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

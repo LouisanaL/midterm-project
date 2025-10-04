@@ -27,7 +27,7 @@ export default function Dashboard() {
       <div className="max-w-3xl mx-auto px-4">
         {/* Page Title */}
         <h1 className="text-3xl font-extrabold mb-8 text-gray-900 flex items-center gap-2">
-          <span className="text-blue-600">📌</span> My Bookings
+          <span className="text-blue-600"></span> My Bookings
         </h1>
 
         {/* Empty State */}
@@ -52,7 +52,7 @@ export default function Dashboard() {
                   <div>
                     <p className="font-semibold text-lg text-gray-900">{s?.name}</p>
                     <p className="text-gray-500 text-sm mt-1">
-                      📅 {b.date} • ⏰ {b.slot}
+                      Date: {b.date} • Time: {b.slot}
                     </p>
                   </div>
                   <button

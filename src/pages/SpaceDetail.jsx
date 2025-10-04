@@ -21,44 +21,18 @@ export default function SpaceDetail() {
   return (
     <div className="bg-transparent min-h-screen py-12 px-4">
       <div className="max-w-7xl mx-auto bg-white/20 backdrop-blur-md rounded-2xl shadow-xl p-10">
-        {/* Top Section */}
-        <div className="flex flex-col lg:flex-row gap-12 mb-20">
-          {/* Main Image */}
-          <div className="flex-1">
-            <div className="overflow-hidden rounded-2xl shadow-xl">
-              <img
-                src={space.mainImage}
-                alt={space.name}
-                className="w-full h-[420px] object-cover transition-transform duration-700 ease-in-out hover:scale-105 cursor-pointer"
-                onClick={() => setSelectedImage(space.mainImage)}
-              />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 flex flex-col justify-between">
-            <div>
-              <h1 className="text-4xl font-extrabold mb-4 text-[#4B2E2E]">{space.name}</h1>
-              <p className="text-[#F6F1EB] mb-6 text-lg">📍 {space.location}</p>
-              <p className="mb-6 text-[#E1D5C9] leading-relaxed">{space.description}</p>
-              <div className="mb-6 space-y-1 text-[#EDE1C9]">
-                <p className="font-medium">🕒 Opening: {space.openingTime || "8:00 AM"}</p>
-                <p className="font-medium">🕔 Closing: {space.closingTime || "9:00 PM"}</p>
-              </div>
-              <p className="text-2xl font-bold text-[#261616] mb-6">₱{space.price}/hr</p>
-            </div>
-
-            {/* Booking */}
-            <div className={`mt-4 ${user ? "bg-transparent p-0 shadow-none" : "bg-[#F9F9F9]/50 border border-[#e5e2dc] p-6 rounded-xl shadow-md"}`}>
-              {user ? <BookingForm space={space} /> : <p className="font-semibold text-red-700 text-lg">
-                ⚠ Please login to book this space.</p>}
-            </div>
-          </div>
+        {/* Main Image */}
+        <div className="overflow-hidden rounded-2xl shadow-xl mb-8">
+          <img
+            src={space.mainImage}
+            alt={space.name}
+            className="w-full h-[420px] object-cover transition-transform duration-700 ease-in-out hover:scale-105 cursor-pointer"
+            onClick={() => setSelectedImage(space.mainImage)}
+          />
         </div>
 
         {/* Gallery */}
-        <div>
-          <h2 className="text-2xl font-bold mb-6 text-[#331F1F]">Gallery</h2>
+        <div className="mb-10">
           {space.gallery && space.gallery.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
               {space.gallery.map((img, idx) => (
@@ -75,6 +49,29 @@ export default function SpaceDetail() {
             <p className="text-gray-500">No gallery images available.</p>
           )}
         </div>
+
+        {/* Space Details */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-extrabold mb-4 text-[#F0E4D3]">{space.name}</h1>
+          <p className="text-[#F6F1EB] mb-7 text-lg">📍 {space.location}</p>
+          <p className="mb-7 text-[#FAF7F3] leading-relaxed">{space.description}</p>
+          <div className="mb-6 space-y-1 text-[#EDE1C9]">
+            <p className="font-medium">Opening: {space.openingTime || "8:00 AM"}</p>
+            <p className="font-medium">Closing: {space.closingTime || "9:00 PM"}</p>
+          </div>
+          <p className="text-2xl font-bold text-[#FAF7F3] mb-6">₱{space.price}</p>
+        </div>
+
+        {/* Booking Form */}
+        <div className="mb-12">
+          {user ? (
+            <BookingForm space={space} />
+          ) : (
+            <p className="font-semibold text-red-700 text-lg">
+              ⚠ Please login to book this space.
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Image Modal */}
@@ -87,7 +84,7 @@ export default function SpaceDetail() {
             src={selectedImage}
             alt="Selected"
             className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image itself
+            onClick={(e) => e.stopPropagation()}
           />
           <button
             className="absolute top-5 right-5 text-gray text-3xl font-bold"
